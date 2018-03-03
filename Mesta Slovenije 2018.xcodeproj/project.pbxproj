@@ -1,0 +1,564 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B34DF9F0204B134400D7D9B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34DF9EF204B134400D7D9B3 /* AppDelegate.swift */; };
+		B34DF9F2204B134400D7D9B3 /* MainMenu.sks in Resources */ = {isa = PBXBuildFile; fileRef = B34DF9F1204B134400D7D9B3 /* MainMenu.sks */; };
+		B34DF9F4204B134400D7D9B3 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = B34DF9F3204B134400D7D9B3 /* Actions.sks */; };
+		B34DF9F6204B134400D7D9B3 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34DF9F5204B134400D7D9B3 /* MainMenu.swift */; };
+		B34DF9F8204B134400D7D9B3 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34DF9F7204B134400D7D9B3 /* GameViewController.swift */; };
+		B34DF9FB204B134400D7D9B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B34DF9F9204B134400D7D9B3 /* Main.storyboard */; };
+		B34DF9FD204B134400D7D9B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B34DF9FC204B134400D7D9B3 /* Assets.xcassets */; };
+		B34DFA00204B134400D7D9B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B34DF9FE204B134400D7D9B3 /* LaunchScreen.storyboard */; };
+		B34DFA0B204B134400D7D9B3 /* Mesta_Slovenije_2018Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34DFA0A204B134400D7D9B3 /* Mesta_Slovenije_2018Tests.swift */; };
+		B34DFA16204B134400D7D9B3 /* Mesta_Slovenije_2018UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34DFA15204B134400D7D9B3 /* Mesta_Slovenije_2018UITests.swift */; };
+		B3D6D738204B1D71001302D2 /* Gameplay.sks in Resources */ = {isa = PBXBuildFile; fileRef = B3D6D737204B1D71001302D2 /* Gameplay.sks */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B34DFA07204B134400D7D9B3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B34DF9E4204B134400D7D9B3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B34DF9EB204B134400D7D9B3;
+			remoteInfo = "Mesta Slovenije 2018";
+		};
+		B34DFA12204B134400D7D9B3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B34DF9E4204B134400D7D9B3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B34DF9EB204B134400D7D9B3;
+			remoteInfo = "Mesta Slovenije 2018";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B34DF9EC204B134400D7D9B3 /* Mesta Slovenije 2018.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mesta Slovenije 2018.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B34DF9EF204B134400D7D9B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B34DF9F1204B134400D7D9B3 /* MainMenu.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainMenu.sks; sourceTree = "<group>"; };
+		B34DF9F3204B134400D7D9B3 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
+		B34DF9F5204B134400D7D9B3 /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
+		B34DF9F7204B134400D7D9B3 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		B34DF9FA204B134400D7D9B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B34DF9FC204B134400D7D9B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B34DF9FF204B134400D7D9B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B34DFA01204B134400D7D9B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B34DFA06204B134400D7D9B3 /* Mesta Slovenije 2018Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mesta Slovenije 2018Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B34DFA0A204B134400D7D9B3 /* Mesta_Slovenije_2018Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mesta_Slovenije_2018Tests.swift; sourceTree = "<group>"; };
+		B34DFA0C204B134400D7D9B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B34DFA11204B134400D7D9B3 /* Mesta Slovenije 2018UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mesta Slovenije 2018UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B34DFA15204B134400D7D9B3 /* Mesta_Slovenije_2018UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mesta_Slovenije_2018UITests.swift; sourceTree = "<group>"; };
+		B34DFA17204B134400D7D9B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B3D6D737204B1D71001302D2 /* Gameplay.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Gameplay.sks; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B34DF9E9204B134400D7D9B3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B34DFA03204B134400D7D9B3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B34DFA0E204B134400D7D9B3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B34DF9E3204B134400D7D9B3 = {
+			isa = PBXGroup;
+			children = (
+				B34DF9EE204B134400D7D9B3 /* Mesta Slovenije 2018 */,
+				B34DFA09204B134400D7D9B3 /* Mesta Slovenije 2018Tests */,
+				B34DFA14204B134400D7D9B3 /* Mesta Slovenije 2018UITests */,
+				B34DF9ED204B134400D7D9B3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B34DF9ED204B134400D7D9B3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B34DF9EC204B134400D7D9B3 /* Mesta Slovenije 2018.app */,
+				B34DFA06204B134400D7D9B3 /* Mesta Slovenije 2018Tests.xctest */,
+				B34DFA11204B134400D7D9B3 /* Mesta Slovenije 2018UITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B34DF9EE204B134400D7D9B3 /* Mesta Slovenije 2018 */ = {
+			isa = PBXGroup;
+			children = (
+				B3511ABD204B68200089297E /* Code */,
+				B3511ABC204B680F0089297E /* Scenes */,
+				B34DF9EF204B134400D7D9B3 /* AppDelegate.swift */,
+				B34DF9F3204B134400D7D9B3 /* Actions.sks */,
+				B34DF9F7204B134400D7D9B3 /* GameViewController.swift */,
+				B34DF9FC204B134400D7D9B3 /* Assets.xcassets */,
+				B34DF9F9204B134400D7D9B3 /* Main.storyboard */,
+				B34DF9FE204B134400D7D9B3 /* LaunchScreen.storyboard */,
+				B34DFA01204B134400D7D9B3 /* Info.plist */,
+			);
+			path = "Mesta Slovenije 2018";
+			sourceTree = "<group>";
+		};
+		B34DFA09204B134400D7D9B3 /* Mesta Slovenije 2018Tests */ = {
+			isa = PBXGroup;
+			children = (
+				B34DFA0A204B134400D7D9B3 /* Mesta_Slovenije_2018Tests.swift */,
+				B34DFA0C204B134400D7D9B3 /* Info.plist */,
+			);
+			path = "Mesta Slovenije 2018Tests";
+			sourceTree = "<group>";
+		};
+		B34DFA14204B134400D7D9B3 /* Mesta Slovenije 2018UITests */ = {
+			isa = PBXGroup;
+			children = (
+				B34DFA15204B134400D7D9B3 /* Mesta_Slovenije_2018UITests.swift */,
+				B34DFA17204B134400D7D9B3 /* Info.plist */,
+			);
+			path = "Mesta Slovenije 2018UITests";
+			sourceTree = "<group>";
+		};
+		B3511ABC204B680F0089297E /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				B34DF9F1204B134400D7D9B3 /* MainMenu.sks */,
+				B3D6D737204B1D71001302D2 /* Gameplay.sks */,
+			);
+			name = Scenes;
+			sourceTree = "<group>";
+		};
+		B3511ABD204B68200089297E /* Code */ = {
+			isa = PBXGroup;
+			children = (
+				B34DF9F5204B134400D7D9B3 /* MainMenu.swift */,
+			);
+			name = Code;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B34DF9EB204B134400D7D9B3 /* Mesta Slovenije 2018 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B34DFA1A204B134400D7D9B3 /* Build configuration list for PBXNativeTarget "Mesta Slovenije 2018" */;
+			buildPhases = (
+				B34DF9E8204B134400D7D9B3 /* Sources */,
+				B34DF9E9204B134400D7D9B3 /* Frameworks */,
+				B34DF9EA204B134400D7D9B3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Mesta Slovenije 2018";
+			productName = "Mesta Slovenije 2018";
+			productReference = B34DF9EC204B134400D7D9B3 /* Mesta Slovenije 2018.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B34DFA05204B134400D7D9B3 /* Mesta Slovenije 2018Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B34DFA1D204B134400D7D9B3 /* Build configuration list for PBXNativeTarget "Mesta Slovenije 2018Tests" */;
+			buildPhases = (
+				B34DFA02204B134400D7D9B3 /* Sources */,
+				B34DFA03204B134400D7D9B3 /* Frameworks */,
+				B34DFA04204B134400D7D9B3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B34DFA08204B134400D7D9B3 /* PBXTargetDependency */,
+			);
+			name = "Mesta Slovenije 2018Tests";
+			productName = "Mesta Slovenije 2018Tests";
+			productReference = B34DFA06204B134400D7D9B3 /* Mesta Slovenije 2018Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		B34DFA10204B134400D7D9B3 /* Mesta Slovenije 2018UITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B34DFA20204B134400D7D9B3 /* Build configuration list for PBXNativeTarget "Mesta Slovenije 2018UITests" */;
+			buildPhases = (
+				B34DFA0D204B134400D7D9B3 /* Sources */,
+				B34DFA0E204B134400D7D9B3 /* Frameworks */,
+				B34DFA0F204B134400D7D9B3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B34DFA13204B134400D7D9B3 /* PBXTargetDependency */,
+			);
+			name = "Mesta Slovenije 2018UITests";
+			productName = "Mesta Slovenije 2018UITests";
+			productReference = B34DFA11204B134400D7D9B3 /* Mesta Slovenije 2018UITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B34DF9E4204B134400D7D9B3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0810;
+				LastUpgradeCheck = 0810;
+				TargetAttributes = {
+					B34DF9EB204B134400D7D9B3 = {
+						CreatedOnToolsVersion = 8.1;
+						ProvisioningStyle = Automatic;
+					};
+					B34DFA05204B134400D7D9B3 = {
+						CreatedOnToolsVersion = 8.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = B34DF9EB204B134400D7D9B3;
+					};
+					B34DFA10204B134400D7D9B3 = {
+						CreatedOnToolsVersion = 8.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = B34DF9EB204B134400D7D9B3;
+					};
+				};
+			};
+			buildConfigurationList = B34DF9E7204B134400D7D9B3 /* Build configuration list for PBXProject "Mesta Slovenije 2018" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B34DF9E3204B134400D7D9B3;
+			productRefGroup = B34DF9ED204B134400D7D9B3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B34DF9EB204B134400D7D9B3 /* Mesta Slovenije 2018 */,
+				B34DFA05204B134400D7D9B3 /* Mesta Slovenije 2018Tests */,
+				B34DFA10204B134400D7D9B3 /* Mesta Slovenije 2018UITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B34DF9EA204B134400D7D9B3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B34DF9FB204B134400D7D9B3 /* Main.storyboard in Resources */,
+				B34DF9F2204B134400D7D9B3 /* MainMenu.sks in Resources */,
+				B34DF9FD204B134400D7D9B3 /* Assets.xcassets in Resources */,
+				B34DFA00204B134400D7D9B3 /* LaunchScreen.storyboard in Resources */,
+				B3D6D738204B1D71001302D2 /* Gameplay.sks in Resources */,
+				B34DF9F4204B134400D7D9B3 /* Actions.sks in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B34DFA04204B134400D7D9B3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B34DFA0F204B134400D7D9B3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B34DF9E8204B134400D7D9B3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B34DF9F6204B134400D7D9B3 /* MainMenu.swift in Sources */,
+				B34DF9F8204B134400D7D9B3 /* GameViewController.swift in Sources */,
+				B34DF9F0204B134400D7D9B3 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B34DFA02204B134400D7D9B3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B34DFA0B204B134400D7D9B3 /* Mesta_Slovenije_2018Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B34DFA0D204B134400D7D9B3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B34DFA16204B134400D7D9B3 /* Mesta_Slovenije_2018UITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B34DFA08204B134400D7D9B3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B34DF9EB204B134400D7D9B3 /* Mesta Slovenije 2018 */;
+			targetProxy = B34DFA07204B134400D7D9B3 /* PBXContainerItemProxy */;
+		};
+		B34DFA13204B134400D7D9B3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B34DF9EB204B134400D7D9B3 /* Mesta Slovenije 2018 */;
+			targetProxy = B34DFA12204B134400D7D9B3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B34DF9F9204B134400D7D9B3 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B34DF9FA204B134400D7D9B3 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B34DF9FE204B134400D7D9B3 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B34DF9FF204B134400D7D9B3 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B34DFA18204B134400D7D9B3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B34DFA19204B134400D7D9B3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B34DFA1B204B134400D7D9B3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = "Mesta Slovenije 2018/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dopamin.Mesta-Slovenije-2018";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		B34DFA1C204B134400D7D9B3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = "Mesta Slovenije 2018/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dopamin.Mesta-Slovenije-2018";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		B34DFA1E204B134400D7D9B3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Mesta Slovenije 2018Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dopamin.Mesta-Slovenije-2018Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mesta Slovenije 2018.app/Mesta Slovenije 2018";
+			};
+			name = Debug;
+		};
+		B34DFA1F204B134400D7D9B3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Mesta Slovenije 2018Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dopamin.Mesta-Slovenije-2018Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mesta Slovenije 2018.app/Mesta Slovenije 2018";
+			};
+			name = Release;
+		};
+		B34DFA21204B134400D7D9B3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = "Mesta Slovenije 2018UITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dopamin.Mesta-Slovenije-2018UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = "Mesta Slovenije 2018";
+			};
+			name = Debug;
+		};
+		B34DFA22204B134400D7D9B3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = "Mesta Slovenije 2018UITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dopamin.Mesta-Slovenije-2018UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = "Mesta Slovenije 2018";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B34DF9E7204B134400D7D9B3 /* Build configuration list for PBXProject "Mesta Slovenije 2018" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B34DFA18204B134400D7D9B3 /* Debug */,
+				B34DFA19204B134400D7D9B3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B34DFA1A204B134400D7D9B3 /* Build configuration list for PBXNativeTarget "Mesta Slovenije 2018" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B34DFA1B204B134400D7D9B3 /* Debug */,
+				B34DFA1C204B134400D7D9B3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B34DFA1D204B134400D7D9B3 /* Build configuration list for PBXNativeTarget "Mesta Slovenije 2018Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B34DFA1E204B134400D7D9B3 /* Debug */,
+				B34DFA1F204B134400D7D9B3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B34DFA20204B134400D7D9B3 /* Build configuration list for PBXNativeTarget "Mesta Slovenije 2018UITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B34DFA21204B134400D7D9B3 /* Debug */,
+				B34DFA22204B134400D7D9B3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B34DF9E4204B134400D7D9B3 /* Project object */;
+}
