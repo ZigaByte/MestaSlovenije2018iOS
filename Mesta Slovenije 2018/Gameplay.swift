@@ -21,8 +21,8 @@ class Gameplay: SKScene {
     }
     
     struct Question {
-        var x : Double // TODO: Switch to lat, lon
-        var y : Double
+        var lat : Double
+        var lon : Double // TODO: Switch to lat, lon
         var name : String // Location
         var score : Double
     }
@@ -50,18 +50,32 @@ class Gameplay: SKScene {
     var introUI: SKNode? = nil
     var greenNode: SKNode? = nil
     var redNode: SKNode? = nil
+    var distanceLabel: SKLabelNode? = nil
     
     // This method is called when the scene gets put into the view
     override func didMove(to view: SKView) {
+
+        let path:String = Bundle.main.path(forResource: "testFile", ofType: "txt")!
+        let text = try? String(contentsOfFile: path, encoding: String.Encoding.utf8)
+        let lines: [String] = (text?.components(separatedBy: "\n"))!
+        var allQuestions:[Question] = []
+        for l in lines{
+            print(l)
+            let components: [String] = l.components(separatedBy: ",")
+            if(components.count >= 5){
+                allQuestions.append(Question(lat: Double(components[3].trimmingCharacters(in: .whitespacesAndNewlines))!,
+                                             lon: Double(components[4].trimmingCharacters(in: .whitespacesAndNewlines))!,
+                                             name: components[1], score:0))
+            }
+        }
         
         // Find all the componentes
         gameUI = self.childNode(withName: "//GameUI")
         introUI = self.childNode(withName: "//IntroUI")
-        greenNode = self.childNode(withName: "//AnswerNode")
-        redNode = self.childNode(withName: "//CorrectNode")
+        redNode = self.childNode(withName: "//AnswerNode")
+        greenNode = self.childNode(withName: "//CorrectNode")
+        distanceLabel = self.childNode(withName: "//DistanceLabel") as! SKLabelNode
 
-
-        
         // Set up the initial variables
         
         state = State.INTRO
@@ -73,8 +87,8 @@ class Gameplay: SKScene {
         for i in 0...(STAGE_COUNT-1) {
             stages.append(Stage(name: "Mesta \(i)", questions: []))
             for j in 0...(QUESTIONS_PER_STAGE-1){
-                stages[i].questions.append(Question(x: Double(j * 100), y: Double(j * 50),
-                                                    name: "Lokacija \(i) , \(j)", score: 0))
+                //stages[i].questions.append(Question(x: Double(j * 100), y: Double(j * 50),name: "Lokacija \(i) , \(j)", score: 0))
+                stages[i].questions.append(allQuestions[j])
             }
         }
     }
@@ -87,6 +101,9 @@ class Gameplay: SKScene {
         let question: Question = getQuestion(sIndex: sIndex, qIndex: qIndex)
         let questionLabel:SKLabelNode? = self.childNode(withName: "//QuestionLabel") as! SKLabelNode?
         questionLabel!.text = question.name
+        
+        greenNode?.isHidden = true
+        redNode?.isHidden = true
     }
     
     
@@ -112,20 +129,27 @@ class Gameplay: SKScene {
             
             var currentQuestion: Question = getQuestion(sIndex: stageNumber, qIndex: questionNumber)
             
+            //TODO Calculate score
+            let answer:Coordinate = pixelsToCoordinate(x: Double(pos.x), y: Double(pos.y))
+            let correct:Coordinate = Coordinate(lat: currentQuestion.lat, lon: currentQuestion.lon)
+            let score:Double = distanceInKilometers(answer, correct) // TODO x any y might be changed to lat and lon, then don't convert to Coordinate
+            
+            distanceLabel?.text = String(score).substring(to :String(score).index(String(score).startIndex, offsetBy: 5)) + " km"
+            
+            currentQuestion.score = score
+            
             // Show answer and correct answer
-            greenNode!.position = pos
+            let correctPos:(Double, Double) = coordinateToPixels(coordinate: Coordinate(lat: currentQuestion.lat, lon: currentQuestion.lon))
+            print("x \(correctPos.0)")
+            print("y \(correctPos.1)")
+            greenNode!.position = CGPoint.init(x: CGFloat(correctPos.0), y: CGFloat(correctPos.1))
             greenNode!.zPosition = 10
             greenNode?.isHidden = false
             
-            redNode!.position = CGPoint.init(x: CGFloat(currentQuestion.x), y: CGFloat(currentQuestion.y))
+            // Get clicked position
+            redNode!.position = pos
             redNode!.zPosition = 10
             redNode?.isHidden = false
-            
-            //TODO Calculate score
-            let answer:Coordinate = pixelsToCoordinates(x: Double(pos.x), y: Double(pos.y))
-            let score:Double = distanceInKilometers(answer, pixelsToCoordinates(x: Double(currentQuestion.x),y:Double(currentQuestion.y))) // TODO x any y might be changed to lat and lon, then don't convert to Coordinate
-            
-            currentQuestion.score = score
             
             state = State.ANSWER
             
@@ -234,7 +258,7 @@ class Gameplay: SKScene {
     static let fixed1: Coordinate = Coordinate(lat: 45.6643299, lon: 14.5737826)
     static let fixed2: Coordinate = Coordinate(lat: 46.6561378, lon: 16.0379563)
 
-    func pixelsToCoordinates(x: Double, y: Double) -> Coordinate{
+    func pixelsToCoordinate(x: Double, y: Double) -> Coordinate{
         let sX:Double = (Gameplay.fixed2.lon - Gameplay.fixed1.lon) / Double(1245.0 - 685.7);
         let sY:Double = (Gameplay.fixed2.lat - Gameplay.fixed1.lat) / Double(724.6 - 170.9);
         
@@ -243,6 +267,18 @@ class Gameplay: SKScene {
         //@45.3950057
         
         return Coordinate(lat: n, lon: e)
+    }
+    
+    func coordinateToPixels(coordinate: Coordinate) -> (x:Double, y:Double){
+        print(coordinate.lat)
+        print(coordinate.lon)
+        let sX:Double = (1245.0 - 685.7) / (Gameplay.fixed2.lon - Gameplay.fixed1.lon);
+        let x:Double = (685.7 + sX * (coordinate.lon - Gameplay.fixed1.lon));
+        
+        let sY:Double = (724.6 - 170.9) / (Gameplay.fixed2.lat - Gameplay.fixed1.lat);
+        let y:Double = (170.9 + sY * (coordinate.lat - Gameplay.fixed1.lat));
+        
+        return (x, y)
     }
     
     /**
