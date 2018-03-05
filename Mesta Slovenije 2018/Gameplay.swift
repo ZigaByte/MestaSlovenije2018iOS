@@ -21,10 +21,10 @@ class Gameplay: SKScene {
     }
     
     struct Question {
-        var x : Float // TODO: Switch to lat, lon
-        var y : Float
+        var x : Double // TODO: Switch to lat, lon
+        var y : Double
         var name : String // Location
-        var score : Float
+        var score : Double
     }
     
     struct Stage {
@@ -53,6 +53,7 @@ class Gameplay: SKScene {
     
     // This method is called when the scene gets put into the view
     override func didMove(to view: SKView) {
+        
         // Find all the componentes
         gameUI = self.childNode(withName: "//GameUI")
         introUI = self.childNode(withName: "//IntroUI")
@@ -72,7 +73,7 @@ class Gameplay: SKScene {
         for i in 0...(STAGE_COUNT-1) {
             stages.append(Stage(name: "Mesta \(i)", questions: []))
             for j in 0...(QUESTIONS_PER_STAGE-1){
-                stages[i].questions.append(Question(x: Float(j * 100), y: Float(j * 50),
+                stages[i].questions.append(Question(x: Double(j * 100), y: Double(j * 50),
                                                     name: "Lokacija \(i) , \(j)", score: 0))
             }
         }
@@ -90,6 +91,7 @@ class Gameplay: SKScene {
     
     
     func touchDown(atPoint pos : CGPoint) {
+
         switch state {
         case .INTRO:
             print("Intro")
@@ -108,7 +110,7 @@ class Gameplay: SKScene {
         case .QUESTION:
             print("Question")
             
-            let currentQuestion: Question = getQuestion(sIndex: stageNumber, qIndex: questionNumber)
+            var currentQuestion: Question = getQuestion(sIndex: stageNumber, qIndex: questionNumber)
             
             // Show answer and correct answer
             greenNode!.position = pos
@@ -119,8 +121,11 @@ class Gameplay: SKScene {
             redNode!.zPosition = 10
             redNode?.isHidden = false
             
-            
             //TODO Calculate score
+            let answer:Coordinate = pixelsToCoordinates(x: Double(pos.x), y: Double(pos.y))
+            let score:Double = distanceInKilometers(answer, pixelsToCoordinates(x: Double(currentQuestion.x),y:Double(currentQuestion.y))) // TODO x any y might be changed to lat and lon, then don't convert to Coordinate
+            
+            currentQuestion.score = score
             
             state = State.ANSWER
             
@@ -216,5 +221,51 @@ class Gameplay: SKScene {
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
+    }
+    
+    
+    // Functions for score calculation
+    
+    struct Coordinate {
+        var lat: Double
+        var lon: Double
+    }
+    
+    static let fixed1: Coordinate = Coordinate(lat: 45.6643299, lon: 14.5737826)
+    static let fixed2: Coordinate = Coordinate(lat: 46.6561378, lon: 16.0379563)
+
+    func pixelsToCoordinates(x: Double, y: Double) -> Coordinate{
+        let sX:Double = (Gameplay.fixed2.lon - Gameplay.fixed1.lon) / Double(1245.0 - 685.7);
+        let sY:Double = (Gameplay.fixed2.lat - Gameplay.fixed1.lat) / Double(724.6 - 170.9);
+        
+        let n:Double = (Gameplay.fixed1.lat + sY * (y - 170.9))
+        let e:Double = (Gameplay.fixed1.lon + sX * (x - 685.7))
+        //@45.3950057
+        
+        return Coordinate(lat: n, lon: e)
+    }
+    
+    /**
+     * Calculates the real world distance in kilometres between two coordinate
+     * points in the usual GPS style
+     */
+    func distanceInKilometers(_ point1: Coordinate, _ point2: Coordinate) -> Double{
+        let lat1: Double = point1.lat * 3.1415926 / 180;
+        let lon1: Double = point1.lon * 3.1415926 / 180;
+    
+        let lat2: Double = point2.lat * 3.1415926 / 180;
+        let lon2: Double = point2.lon * 3.1415926 / 180;
+        
+        let deltaLat: Double = (lat2 - lat1) ;
+        let deltaLon: Double = (lon2 - lon1);
+    
+        let R: Int = 6371000; // metres
+    
+        let a: Double = sin(deltaLat / 2) * sin(deltaLat / 2) + cos(lat1) * cos(lat2) * sin(deltaLon / 2) * sin(deltaLon / 2)
+        let c: Double = 2 * atan2(sqrt(a), sqrt(1 - a))
+    
+        let d: Double = Double(R) * c
+    
+        return d / 1000.0
     }
 }
