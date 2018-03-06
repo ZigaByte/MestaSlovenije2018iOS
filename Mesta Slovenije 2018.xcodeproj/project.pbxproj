@@ -17,7 +17,9 @@
 		B34DFA00204B134400D7D9B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B34DF9FE204B134400D7D9B3 /* LaunchScreen.storyboard */; };
 		B34DFA0B204B134400D7D9B3 /* Mesta_Slovenije_2018Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34DFA0A204B134400D7D9B3 /* Mesta_Slovenije_2018Tests.swift */; };
 		B34DFA16204B134400D7D9B3 /* Mesta_Slovenije_2018UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34DFA15204B134400D7D9B3 /* Mesta_Slovenije_2018UITests.swift */; };
+		B3B7D676204C48AB00B1598E /* Gameplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B7D675204C48AB00B1598E /* Gameplay.swift */; };
 		B3D6D738204B1D71001302D2 /* Gameplay.sks in Resources */ = {isa = PBXBuildFile; fileRef = B3D6D737204B1D71001302D2 /* Gameplay.sks */; };
+		B3D819A2204DF214004DF81F /* testFile.txt in Resources */ = {isa = PBXBuildFile; fileRef = B3D819A1204DF214004DF81F /* testFile.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,7 +56,9 @@
 		B34DFA11204B134400D7D9B3 /* Mesta Slovenije 2018UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mesta Slovenije 2018UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B34DFA15204B134400D7D9B3 /* Mesta_Slovenije_2018UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mesta_Slovenije_2018UITests.swift; sourceTree = "<group>"; };
 		B34DFA17204B134400D7D9B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B3B7D675204C48AB00B1598E /* Gameplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gameplay.swift; sourceTree = "<group>"; };
 		B3D6D737204B1D71001302D2 /* Gameplay.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Gameplay.sks; sourceTree = "<group>"; };
+		B3D819A1204DF214004DF81F /* testFile.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = testFile.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +118,7 @@
 				B34DF9F9204B134400D7D9B3 /* Main.storyboard */,
 				B34DF9FE204B134400D7D9B3 /* LaunchScreen.storyboard */,
 				B34DFA01204B134400D7D9B3 /* Info.plist */,
+				B3D819A1204DF214004DF81F /* testFile.txt */,
 			);
 			path = "Mesta Slovenije 2018";
 			sourceTree = "<group>";
@@ -149,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				B34DF9F5204B134400D7D9B3 /* MainMenu.swift */,
+				B3B7D675204C48AB00B1598E /* Gameplay.swift */,
 			);
 			name = Code;
 			sourceTree = "<group>";
@@ -260,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B34DF9FB204B134400D7D9B3 /* Main.storyboard in Resources */,
+				B3D819A2204DF214004DF81F /* testFile.txt in Resources */,
 				B34DF9F2204B134400D7D9B3 /* MainMenu.sks in Resources */,
 				B34DF9FD204B134400D7D9B3 /* Assets.xcassets in Resources */,
 				B34DFA00204B134400D7D9B3 /* LaunchScreen.storyboard in Resources */,
@@ -290,6 +297,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B34DF9F6204B134400D7D9B3 /* MainMenu.swift in Sources */,
+				B3B7D676204C48AB00B1598E /* Gameplay.swift in Sources */,
 				B34DF9F8204B134400D7D9B3 /* GameViewController.swift in Sources */,
 				B34DF9F0204B134400D7D9B3 /* AppDelegate.swift in Sources */,
 			);

@@ -31,11 +31,7 @@ class Gameplay: SKScene {
         var name:String
         var questions:[Question]
     }
-    /*
-    var questions:[Question] = [Question(x:100, y:200, name: "Test 1", score: 0),
-                                 Question(x:300, y:300, name: "Test 2", score: 0),
-                                 Question(x:300, y:700, name: "Test 3", score: 0)]
-     */
+    
     
     // Some constants
     let QUESTIONS_PER_STAGE: Int = 3
@@ -46,11 +42,20 @@ class Gameplay: SKScene {
     var questionNumber:Int = 0 // The current question index, goes from 0 ... QUESTIONS_PER_STAGE-1
     var stageNumber:Int = 0 // The current stage index, goes from 0 ... STAGE_COUNT-1
     
+    var score: Double = 0
+    var goal: Double = 0
+    
     var gameUI: SKNode? = nil
     var introUI: SKNode? = nil
     var greenNode: SKNode? = nil
     var redNode: SKNode? = nil
     var distanceLabel: SKLabelNode? = nil
+    var scoreLabel: SKLabelNode? = nil
+    var goalLabel: SKLabelNode? = nil
+    var questionLabel: SKLabelNode? = nil
+    
+    var stageGoalLabel: SKLabelNode? = nil
+    var stageNameLabel: SKLabelNode? = nil
     
     // This method is called when the scene gets put into the view
     override func didMove(to view: SKView) {
@@ -72,17 +77,18 @@ class Gameplay: SKScene {
         // Find all the componentes
         gameUI = self.childNode(withName: "//GameUI")
         introUI = self.childNode(withName: "//IntroUI")
+        
         redNode = self.childNode(withName: "//AnswerNode")
         greenNode = self.childNode(withName: "//CorrectNode")
-        distanceLabel = self.childNode(withName: "//DistanceLabel") as! SKLabelNode
+        distanceLabel = self.childNode(withName: "//DistanceLabel") as? SKLabelNode
+        scoreLabel = self.childNode(withName: "//ScoreLabel") as? SKLabelNode
+        goalLabel = self.childNode(withName: "//GoalLabel") as? SKLabelNode
+        questionLabel = self.childNode(withName: "//QuestionLabel") as! SKLabelNode?
 
-        // Set up the initial variables
         
-        state = State.INTRO
-        
-        gameUI?.isHidden = true
-        introUI?.isHidden = false
-        
+        stageNameLabel = self.childNode(withName: "//StageNameLabel") as? SKLabelNode
+        stageGoalLabel = self.childNode(withName: "//StageGoalLabel") as? SKLabelNode
+
         // Fill stages
         for i in 0...(STAGE_COUNT-1) {
             stages.append(Stage(name: "Mesta \(i)", questions: []))
@@ -91,6 +97,17 @@ class Gameplay: SKScene {
                 stages[i].questions.append(allQuestions[j])
             }
         }
+        
+        // Set up the initial variables
+        state = State.INTRO
+        
+        gameUI?.isHidden = true
+        introUI?.isHidden = false
+        stageNameLabel?.text = stages[stageNumber].name
+        updateGoal()
+        score = 0
+        updateScore()
+        
     }
     
     func getQuestion (sIndex: Int, qIndex: Int) -> Question{
@@ -99,11 +116,21 @@ class Gameplay: SKScene {
     
     func showQuestion (sIndex: Int, qIndex: Int){
         let question: Question = getQuestion(sIndex: sIndex, qIndex: qIndex)
-        let questionLabel:SKLabelNode? = self.childNode(withName: "//QuestionLabel") as! SKLabelNode?
         questionLabel!.text = question.name
         
         greenNode?.isHidden = true
         redNode?.isHidden = true
+    }
+    
+    func updateScore(){
+        scoreLabel?.text = "\(Int(score)) km"
+    }
+    
+    func updateGoal(){
+        self.goal = Double(stageNumber+1) * 75
+        
+        goalLabel?.text = "Cilj < \(Int(goal)) km"
+        stageGoalLabel?.text = "Cilj < \(Int(goal)) km"
     }
     
     
@@ -133,6 +160,8 @@ class Gameplay: SKScene {
             let answer:Coordinate = pixelsToCoordinate(x: Double(pos.x), y: Double(pos.y))
             let correct:Coordinate = Coordinate(lat: currentQuestion.lat, lon: currentQuestion.lon)
             let score:Double = distanceInKilometers(answer, correct) // TODO x any y might be changed to lat and lon, then don't convert to Coordinate
+            self.score += score
+            updateScore()
             
             distanceLabel?.text = String(score).substring(to :String(score).index(String(score).startIndex, offsetBy: 5)) + " km"
             
@@ -142,12 +171,12 @@ class Gameplay: SKScene {
             let correctPos:(Double, Double) = coordinateToPixels(coordinate: Coordinate(lat: currentQuestion.lat, lon: currentQuestion.lon))
             print("x \(correctPos.0)")
             print("y \(correctPos.1)")
-            greenNode!.position = CGPoint.init(x: CGFloat(correctPos.0), y: CGFloat(correctPos.1))
+            greenNode!.position = CGPoint.init(x: CGFloat(correctPos.0), y: CGFloat(correctPos.1 + 25))
             greenNode!.zPosition = 10
             greenNode?.isHidden = false
             
             // Get clicked position
-            redNode!.position = pos
+            redNode!.position = CGPoint.init(x: pos.x, y: pos.y + 25)
             redNode!.zPosition = 10
             redNode?.isHidden = false
             
@@ -171,6 +200,18 @@ class Gameplay: SKScene {
             // Or to stage results
             else{
                 state = State.STAGE_RESULT
+                questionLabel?.text = "Rezultati"
+                
+                // Show all results
+                let line_path:CGMutablePath = CGMutablePath()
+                line_path.move(to: CGPoint(x:100, y:100))
+                line_path.addLine(to: CGPoint(x:200, y:200))
+                
+                let shape = SKShapeNode()
+                shape.path = line_path
+                shape.lineWidth = 2
+                shape.zPosition = 8
+                self.addChild(shape)
             }
             
             
@@ -185,6 +226,12 @@ class Gameplay: SKScene {
                 // TODO Hide stuff maybe
                 
                 state = State.INTRO
+                gameUI?.isHidden = true
+                introUI?.isHidden = false
+                updateGoal()
+                stageNameLabel?.text = stages[stageNumber].name
+
+                
             }
                 // Or to game results
             else{
@@ -204,20 +251,7 @@ class Gameplay: SKScene {
                 // Present the scene
                 self.view!.presentScene(scene)
             }
-
-            
         }
-        
-        
-        /*
-        
-        let questionLabel:SKLabelNode? = self.childNode(withName: "QuestionLabel") as! SKLabelNode?
-        questionLabel!.text = currentQuestion!.name
-        
-        // Next question
-        currentQuestion = questions[questionIndex % questions.count]
-        questionIndex += 1
-        */
         
     }
     
