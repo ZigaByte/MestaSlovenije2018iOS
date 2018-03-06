@@ -22,7 +22,9 @@ class Gameplay: SKScene {
     
     struct Question {
         var lat : Double
-        var lon : Double // TODO: Switch to lat, lon
+        var lon : Double
+        var xAnswer: Double
+        var yAnswer: Double
         var name : String // Location
         var score : Double
     }
@@ -47,12 +49,22 @@ class Gameplay: SKScene {
     
     var gameUI: SKNode? = nil
     var introUI: SKNode? = nil
+    var resultsUI: SKNode? = nil
     var greenNode: SKNode? = nil
     var redNode: SKNode? = nil
     var distanceLabel: SKLabelNode? = nil
     var scoreLabel: SKLabelNode? = nil
     var goalLabel: SKLabelNode? = nil
     var questionLabel: SKLabelNode? = nil
+    
+    var greenNode1: SKNode? = nil
+    var redNode1: SKNode? = nil
+    var greenNode2: SKNode? = nil
+    var redNode2: SKNode? = nil
+    var greenNode3: SKNode? = nil
+    var redNode3: SKNode? = nil
+    
+    var linesNode: SKNode? = nil
     
     var stageGoalLabel: SKLabelNode? = nil
     var stageNameLabel: SKLabelNode? = nil
@@ -65,11 +77,11 @@ class Gameplay: SKScene {
         let lines: [String] = (text?.components(separatedBy: "\n"))!
         var allQuestions:[Question] = []
         for l in lines{
-            print(l)
             let components: [String] = l.components(separatedBy: ",")
             if(components.count >= 5){
                 allQuestions.append(Question(lat: Double(components[3].trimmingCharacters(in: .whitespacesAndNewlines))!,
                                              lon: Double(components[4].trimmingCharacters(in: .whitespacesAndNewlines))!,
+                                             xAnswer: 0, yAnswer: 0,
                                              name: components[1], score:0))
             }
         }
@@ -77,6 +89,7 @@ class Gameplay: SKScene {
         // Find all the componentes
         gameUI = self.childNode(withName: "//GameUI")
         introUI = self.childNode(withName: "//IntroUI")
+        resultsUI = self.childNode(withName: "//ResultsUI")
         
         redNode = self.childNode(withName: "//AnswerNode")
         greenNode = self.childNode(withName: "//CorrectNode")
@@ -84,7 +97,15 @@ class Gameplay: SKScene {
         scoreLabel = self.childNode(withName: "//ScoreLabel") as? SKLabelNode
         goalLabel = self.childNode(withName: "//GoalLabel") as? SKLabelNode
         questionLabel = self.childNode(withName: "//QuestionLabel") as! SKLabelNode?
-
+        
+        redNode1 = self.childNode(withName: "//AnswerNode1")
+        greenNode1 = self.childNode(withName: "//CorrectNode1")
+        redNode2 = self.childNode(withName: "//AnswerNode2")
+        greenNode2 = self.childNode(withName: "//CorrectNode2")
+        redNode3 = self.childNode(withName: "//AnswerNode3")
+        greenNode3 = self.childNode(withName: "//CorrectNode3")
+        
+        linesNode = self.childNode(withName: "LinesNode")
         
         stageNameLabel = self.childNode(withName: "//StageNameLabel") as? SKLabelNode
         stageGoalLabel = self.childNode(withName: "//StageGoalLabel") as? SKLabelNode
@@ -133,6 +154,33 @@ class Gameplay: SKScene {
         stageGoalLabel?.text = "Cilj < \(Int(goal)) km"
     }
     
+    func setMarkerPositions(question: Question, red: SKNode, green: SKNode){
+        let correctPos:(Double, Double) = coordinateToPixels(coordinate: Coordinate(lat: question.lat, lon: question.lon))
+        
+        // Show all results
+        let line_path:CGMutablePath = CGMutablePath()
+        line_path.move(to: CGPoint.init(x: CGFloat(correctPos.0), y: CGFloat(correctPos.1)))
+        line_path.addLine(to: CGPoint.init(x: question.xAnswer, y: question.yAnswer))
+        
+        let shape = SKShapeNode()
+        shape.name = "Line"
+        shape.path = line_path
+        shape.lineWidth = 2
+        shape.zPosition = 8
+        linesNode!.addChild(shape)
+        
+        green.position = CGPoint.init(x: CGFloat(correctPos.0), y: CGFloat(correctPos.1 + 25))
+        green.zPosition = 10
+        green.isHidden = false
+        
+        (red.childNode(withName: "DistanceLabel") as! SKLabelNode).text = "\(Int(question.score)) km"
+        
+        // Get clicked position
+        red.position = CGPoint.init(x: question.xAnswer, y: question.yAnswer + 25)
+        red.zPosition = 10
+        red.isHidden = false
+    }
+    
     
     func touchDown(atPoint pos : CGPoint) {
 
@@ -143,6 +191,7 @@ class Gameplay: SKScene {
             // Set up UI for game
             gameUI?.isHidden = false
             introUI?.isHidden = true
+            resultsUI?.isHidden = true
             
             // Show first question
             questionNumber = 0
@@ -154,32 +203,22 @@ class Gameplay: SKScene {
         case .QUESTION:
             print("Question")
             
-            var currentQuestion: Question = getQuestion(sIndex: stageNumber, qIndex: questionNumber)
+            let currentQuestion: Question = getQuestion(sIndex: stageNumber, qIndex: questionNumber)
             
-            //TODO Calculate score
             let answer:Coordinate = pixelsToCoordinate(x: Double(pos.x), y: Double(pos.y))
             let correct:Coordinate = Coordinate(lat: currentQuestion.lat, lon: currentQuestion.lon)
             let score:Double = distanceInKilometers(answer, correct) // TODO x any y might be changed to lat and lon, then don't convert to Coordinate
-            self.score += score
+            self.score += Double(Int(score))
             updateScore()
             
-            distanceLabel?.text = String(score).substring(to :String(score).index(String(score).startIndex, offsetBy: 5)) + " km"
+            distanceLabel?.text = "\(Int(score)) km"
             
-            currentQuestion.score = score
+            stages[stageNumber].questions[questionNumber].score = score
+            stages[stageNumber].questions[questionNumber].xAnswer = Double(pos.x)
+            stages[stageNumber].questions[questionNumber].yAnswer = Double(pos.y)
             
-            // Show answer and correct answer
-            let correctPos:(Double, Double) = coordinateToPixels(coordinate: Coordinate(lat: currentQuestion.lat, lon: currentQuestion.lon))
-            print("x \(correctPos.0)")
-            print("y \(correctPos.1)")
-            greenNode!.position = CGPoint.init(x: CGFloat(correctPos.0), y: CGFloat(correctPos.1 + 25))
-            greenNode!.zPosition = 10
-            greenNode?.isHidden = false
-            
-            // Get clicked position
-            redNode!.position = CGPoint.init(x: pos.x, y: pos.y + 25)
-            redNode!.zPosition = 10
-            redNode?.isHidden = false
-            
+            setMarkerPositions(question: stages[stageNumber].questions[questionNumber], red: redNode!, green: greenNode!)
+
             state = State.ANSWER
             
             
@@ -187,11 +226,12 @@ class Gameplay: SKScene {
             print("Answer")
             
             questionNumber += 1
+            redNode?.isHidden = true
+            greenNode?.isHidden = true
+            linesNode!.removeAllChildren()
             
             // Move to next question
             if(questionNumber < QUESTIONS_PER_STAGE){
-                redNode?.isHidden = true
-                greenNode?.isHidden = true
                 
                 showQuestion(sIndex: stageNumber, qIndex: questionNumber)
                 
@@ -202,16 +242,12 @@ class Gameplay: SKScene {
                 state = State.STAGE_RESULT
                 questionLabel?.text = "Rezultati"
                 
-                // Show all results
-                let line_path:CGMutablePath = CGMutablePath()
-                line_path.move(to: CGPoint(x:100, y:100))
-                line_path.addLine(to: CGPoint(x:200, y:200))
+                // Show the 3 things
+                setMarkerPositions(question: stages[stageNumber].questions[0], red: redNode1!, green: greenNode1!)
+                setMarkerPositions(question: stages[stageNumber].questions[1], red: redNode2!, green: greenNode2!)
+                setMarkerPositions(question: stages[stageNumber].questions[2], red: redNode3!, green: greenNode3!)
                 
-                let shape = SKShapeNode()
-                shape.path = line_path
-                shape.lineWidth = 2
-                shape.zPosition = 8
-                self.addChild(shape)
+                resultsUI?.isHidden = false
             }
             
             
@@ -238,7 +274,13 @@ class Gameplay: SKScene {
                 state = State.GAME_RESULTS
             }
             
-            
+            redNode1?.isHidden = true
+            redNode2?.isHidden = true
+            redNode3?.isHidden = true
+            greenNode1?.isHidden = true
+            greenNode2?.isHidden = true
+            greenNode3?.isHidden = true
+            linesNode!.removeAllChildren()
             
         case .GAME_RESULTS:
             print("Game Results")
@@ -304,8 +346,6 @@ class Gameplay: SKScene {
     }
     
     func coordinateToPixels(coordinate: Coordinate) -> (x:Double, y:Double){
-        print(coordinate.lat)
-        print(coordinate.lon)
         let sX:Double = (1245.0 - 685.7) / (Gameplay.fixed2.lon - Gameplay.fixed1.lon);
         let x:Double = (685.7 + sX * (coordinate.lon - Gameplay.fixed1.lon));
         
