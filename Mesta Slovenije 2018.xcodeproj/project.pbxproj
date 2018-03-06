@@ -20,6 +20,21 @@
 		B3B7D676204C48AB00B1598E /* Gameplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B7D675204C48AB00B1598E /* Gameplay.swift */; };
 		B3D6D738204B1D71001302D2 /* Gameplay.sks in Resources */ = {isa = PBXBuildFile; fileRef = B3D6D737204B1D71001302D2 /* Gameplay.sks */; };
 		B3D819A2204DF214004DF81F /* testFile.txt in Resources */ = {isa = PBXBuildFile; fileRef = B3D819A1204DF214004DF81F /* testFile.txt */; };
+		B3D819D0204F42C0004DF81F /* elektrarne.txt in Resources */ = {isa = PBXBuildFile; fileRef = B3D819C1204F42C0004DF81F /* elektrarne.txt */; };
+		B3D819D1204F42C0004DF81F /* gore.txt in Resources */ = {isa = PBXBuildFile; fileRef = B3D819C2204F42C0004DF81F /* gore.txt */; };
+		B3D819D2204F42C0004DF81F /* gradovi.txt in Resources */ = {isa = PBXBuildFile; fileRef = B3D819C3204F42C0004DF81F /* gradovi.txt */; };
+		B3D819D3204F42C0004DF81F /* izviri.txt in Resources */ = {isa = PBXBuildFile; fileRef = B3D819C4204F42C0004DF81F /* izviri.txt */; };
+		B3D819D4204F42C0004DF81F /* mesta1.txt in Resources */ = {isa = PBXBuildFile; fileRef = B3D819C5204F42C0004DF81F /* mesta1.txt */; };
+		B3D819D5204F42C0004DF81F /* mesta2.txt in Resources */ = {isa = PBXBuildFile; fileRef = B3D819C6204F42C0004DF81F /* mesta2.txt */; };
+		B3D819D6204F42C0004DF81F /* mesta3.txt in Resources */ = {isa = PBXBuildFile; fileRef = B3D819C7204F42C0004DF81F /* mesta3.txt */; };
+		B3D819D7204F42C0004DF81F /* mesta4.txt in Resources */ = {isa = PBXBuildFile; fileRef = B3D819C8204F42C0004DF81F /* mesta4.txt */; };
+		B3D819D8204F42C0004DF81F /* muzeji.txt in Resources */ = {isa = PBXBuildFile; fileRef = B3D819C9204F42C0004DF81F /* muzeji.txt */; };
+		B3D819D9204F42C0004DF81F /* naravne_znamenitosti.txt in Resources */ = {isa = PBXBuildFile; fileRef = B3D819CA204F42C0004DF81F /* naravne_znamenitosti.txt */; };
+		B3D819DA204F42C0004DF81F /* podjetja.txt in Resources */ = {isa = PBXBuildFile; fileRef = B3D819CB204F42C0004DF81F /* podjetja.txt */; };
+		B3D819DB204F42C0004DF81F /* smucisca.txt in Resources */ = {isa = PBXBuildFile; fileRef = B3D819CC204F42C0004DF81F /* smucisca.txt */; };
+		B3D819DC204F42C0004DF81F /* stadioni.txt in Resources */ = {isa = PBXBuildFile; fileRef = B3D819CD204F42C0004DF81F /* stadioni.txt */; };
+		B3D819DD204F42C0004DF81F /* zdravilisca.txt in Resources */ = {isa = PBXBuildFile; fileRef = B3D819CE204F42C0004DF81F /* zdravilisca.txt */; };
+		B3D819DE204F42C0004DF81F /* znamenitosti.txt in Resources */ = {isa = PBXBuildFile; fileRef = B3D819CF204F42C0004DF81F /* znamenitosti.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +74,21 @@
 		B3B7D675204C48AB00B1598E /* Gameplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gameplay.swift; sourceTree = "<group>"; };
 		B3D6D737204B1D71001302D2 /* Gameplay.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Gameplay.sks; sourceTree = "<group>"; };
 		B3D819A1204DF214004DF81F /* testFile.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = testFile.txt; sourceTree = "<group>"; };
+		B3D819C1204F42C0004DF81F /* elektrarne.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = elektrarne.txt; path = ../../../location_data/elektrarne.txt; sourceTree = "<group>"; };
+		B3D819C2204F42C0004DF81F /* gore.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = gore.txt; path = ../../../location_data/gore.txt; sourceTree = "<group>"; };
+		B3D819C3204F42C0004DF81F /* gradovi.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = gradovi.txt; path = ../../../location_data/gradovi.txt; sourceTree = "<group>"; };
+		B3D819C4204F42C0004DF81F /* izviri.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = izviri.txt; path = ../../../location_data/izviri.txt; sourceTree = "<group>"; };
+		B3D819C5204F42C0004DF81F /* mesta1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = mesta1.txt; path = ../../../location_data/mesta1.txt; sourceTree = "<group>"; };
+		B3D819C6204F42C0004DF81F /* mesta2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = mesta2.txt; path = ../../../location_data/mesta2.txt; sourceTree = "<group>"; };
+		B3D819C7204F42C0004DF81F /* mesta3.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = mesta3.txt; path = ../../../location_data/mesta3.txt; sourceTree = "<group>"; };
+		B3D819C8204F42C0004DF81F /* mesta4.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = mesta4.txt; path = ../../../location_data/mesta4.txt; sourceTree = "<group>"; };
+		B3D819C9204F42C0004DF81F /* muzeji.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = muzeji.txt; path = ../../../location_data/muzeji.txt; sourceTree = "<group>"; };
+		B3D819CA204F42C0004DF81F /* naravne_znamenitosti.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = naravne_znamenitosti.txt; path = ../../../location_data/naravne_znamenitosti.txt; sourceTree = "<group>"; };
+		B3D819CB204F42C0004DF81F /* podjetja.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = podjetja.txt; path = ../../../location_data/podjetja.txt; sourceTree = "<group>"; };
+		B3D819CC204F42C0004DF81F /* smucisca.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = smucisca.txt; path = ../../../location_data/smucisca.txt; sourceTree = "<group>"; };
+		B3D819CD204F42C0004DF81F /* stadioni.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = stadioni.txt; path = ../../../location_data/stadioni.txt; sourceTree = "<group>"; };
+		B3D819CE204F42C0004DF81F /* zdravilisca.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = zdravilisca.txt; path = ../../../location_data/zdravilisca.txt; sourceTree = "<group>"; };
+		B3D819CF204F42C0004DF81F /* znamenitosti.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = znamenitosti.txt; path = ../../../location_data/znamenitosti.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +149,21 @@
 				B34DF9FE204B134400D7D9B3 /* LaunchScreen.storyboard */,
 				B34DFA01204B134400D7D9B3 /* Info.plist */,
 				B3D819A1204DF214004DF81F /* testFile.txt */,
+				B3D819C1204F42C0004DF81F /* elektrarne.txt */,
+				B3D819C2204F42C0004DF81F /* gore.txt */,
+				B3D819C3204F42C0004DF81F /* gradovi.txt */,
+				B3D819C4204F42C0004DF81F /* izviri.txt */,
+				B3D819C5204F42C0004DF81F /* mesta1.txt */,
+				B3D819C6204F42C0004DF81F /* mesta2.txt */,
+				B3D819C7204F42C0004DF81F /* mesta3.txt */,
+				B3D819C8204F42C0004DF81F /* mesta4.txt */,
+				B3D819C9204F42C0004DF81F /* muzeji.txt */,
+				B3D819CA204F42C0004DF81F /* naravne_znamenitosti.txt */,
+				B3D819CB204F42C0004DF81F /* podjetja.txt */,
+				B3D819CC204F42C0004DF81F /* smucisca.txt */,
+				B3D819CD204F42C0004DF81F /* stadioni.txt */,
+				B3D819CE204F42C0004DF81F /* zdravilisca.txt */,
+				B3D819CF204F42C0004DF81F /* znamenitosti.txt */,
 			);
 			path = "Mesta Slovenije 2018";
 			sourceTree = "<group>";
@@ -265,13 +310,28 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3D819D5204F42C0004DF81F /* mesta2.txt in Resources */,
 				B34DF9FB204B134400D7D9B3 /* Main.storyboard in Resources */,
+				B3D819DD204F42C0004DF81F /* zdravilisca.txt in Resources */,
+				B3D819DE204F42C0004DF81F /* znamenitosti.txt in Resources */,
+				B3D819D3204F42C0004DF81F /* izviri.txt in Resources */,
+				B3D819D0204F42C0004DF81F /* elektrarne.txt in Resources */,
 				B3D819A2204DF214004DF81F /* testFile.txt in Resources */,
+				B3D819DB204F42C0004DF81F /* smucisca.txt in Resources */,
+				B3D819D7204F42C0004DF81F /* mesta4.txt in Resources */,
 				B34DF9F2204B134400D7D9B3 /* MainMenu.sks in Resources */,
 				B34DF9FD204B134400D7D9B3 /* Assets.xcassets in Resources */,
 				B34DFA00204B134400D7D9B3 /* LaunchScreen.storyboard in Resources */,
+				B3D819DA204F42C0004DF81F /* podjetja.txt in Resources */,
 				B3D6D738204B1D71001302D2 /* Gameplay.sks in Resources */,
+				B3D819D2204F42C0004DF81F /* gradovi.txt in Resources */,
+				B3D819DC204F42C0004DF81F /* stadioni.txt in Resources */,
+				B3D819D9204F42C0004DF81F /* naravne_znamenitosti.txt in Resources */,
+				B3D819D1204F42C0004DF81F /* gore.txt in Resources */,
+				B3D819D8204F42C0004DF81F /* muzeji.txt in Resources */,
 				B34DF9F4204B134400D7D9B3 /* Actions.sks in Resources */,
+				B3D819D4204F42C0004DF81F /* mesta1.txt in Resources */,
+				B3D819D6204F42C0004DF81F /* mesta3.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

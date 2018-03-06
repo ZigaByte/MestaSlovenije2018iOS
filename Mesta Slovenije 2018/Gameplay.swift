@@ -37,7 +37,7 @@ class Gameplay: SKScene {
     
     // Some constants
     let QUESTIONS_PER_STAGE: Int = 3
-    let STAGE_COUNT = 2
+    var STAGE_COUNT = 2
     
     var state:State = State.INTRO
     var stages:[Stage] = []
@@ -69,10 +69,8 @@ class Gameplay: SKScene {
     var stageGoalLabel: SKLabelNode? = nil
     var stageNameLabel: SKLabelNode? = nil
     
-    // This method is called when the scene gets put into the view
-    override func didMove(to view: SKView) {
-
-        let path:String = Bundle.main.path(forResource: "testFile", ofType: "txt")!
+    func loadStage(fileName: String, ofType: String, stageName: String) -> ([Question], Stage){
+        let path:String = Bundle.main.path(forResource: fileName, ofType: ofType)!
         let text = try? String(contentsOfFile: path, encoding: String.Encoding.utf8)
         let lines: [String] = (text?.components(separatedBy: "\n"))!
         var allQuestions:[Question] = []
@@ -85,6 +83,31 @@ class Gameplay: SKScene {
                                              name: components[1], score:0))
             }
         }
+        return (allQuestions, Stage(name: stageName, questions:[]))
+    }
+    
+    // This method is called when the scene gets put into the view
+    override func didMove(to view: SKView) {
+
+        var loadedData: [([Question], Stage)] = []
+        loadedData.append(loadStage(fileName: "elektrarne", ofType:"txt", stageName: "Elektrarne"))
+        loadedData.append(loadStage(fileName: "gore", ofType:"txt", stageName: "Gore"))
+        loadedData.append(loadStage(fileName: "gradovi", ofType:"txt", stageName: "Gradovi"))
+        loadedData.append(loadStage(fileName: "izviri", ofType:"txt", stageName: "Izviri"))
+        loadedData.append(loadStage(fileName: "mesta1", ofType:"txt", stageName: "Velika Mesta"))
+        loadedData.append(loadStage(fileName: "mesta2", ofType:"txt", stageName: "Mesta"))
+        loadedData.append(loadStage(fileName: "mesta3", ofType:"txt", stageName: "Manjša Mesta"))
+        loadedData.append(loadStage(fileName: "mesta4", ofType:"txt", stageName: "Naselja"))
+        loadedData.append(loadStage(fileName: "muzeji", ofType:"txt", stageName: "Muzeji"))
+        loadedData.append(loadStage(fileName: "naravne_znamenitosti", ofType:"txt", stageName: "Naravne znamenitosti"))
+        loadedData.append(loadStage(fileName: "podjetja", ofType:"txt", stageName: "Podjetja"))
+        loadedData.append(loadStage(fileName: "smucisca", ofType:"txt", stageName: "Smučiščca"))
+        loadedData.append(loadStage(fileName: "stadioni", ofType:"txt", stageName: "Športni objekti"))
+        loadedData.append(loadStage(fileName: "zdravilisca", ofType:"txt", stageName: "Zdraviliščca"))
+        loadedData.append(loadStage(fileName: "znamenitosti", ofType:"txt", stageName: "Znamenitosti"))
+        
+        STAGE_COUNT = loadedData.count
+
         
         // Find all the componentes
         gameUI = self.childNode(withName: "//GameUI")
@@ -111,12 +134,13 @@ class Gameplay: SKScene {
         stageGoalLabel = self.childNode(withName: "//StageGoalLabel") as? SKLabelNode
 
         // Fill stages
-        for i in 0...(STAGE_COUNT-1) {
-            stages.append(Stage(name: "Mesta \(i)", questions: []))
+        var  i = 0
+        for data in  loadedData {
+            stages.append(data.1)
             for j in 0...(QUESTIONS_PER_STAGE-1){
-                //stages[i].questions.append(Question(x: Double(j * 100), y: Double(j * 50),name: "Lokacija \(i) , \(j)", score: 0))
-                stages[i].questions.append(allQuestions[j])
+                stages[i].questions.append(data.0[j])
             }
+            i += 1
         }
         
         // Set up the initial variables
@@ -124,10 +148,18 @@ class Gameplay: SKScene {
         
         gameUI?.isHidden = true
         introUI?.isHidden = false
+        resultsUI?.isHidden = true
         stageNameLabel?.text = stages[stageNumber].name
         updateGoal()
         score = 0
         updateScore()
+        
+        redNode1?.isHidden = true
+        redNode2?.isHidden = true
+        redNode3?.isHidden = true
+        greenNode1?.isHidden = true
+        greenNode2?.isHidden = true
+        greenNode3?.isHidden = true
         
     }
     
@@ -169,15 +201,18 @@ class Gameplay: SKScene {
         shape.zPosition = 8
         linesNode!.addChild(shape)
         
+        let answerY = correctPos.1 + 25
+        let correctY = question.yAnswer + 25
+        
         green.position = CGPoint.init(x: CGFloat(correctPos.0), y: CGFloat(correctPos.1 + 25))
-        green.zPosition = 10
+        green.zPosition = answerY > correctY ? 10 : 11
         green.isHidden = false
         
         (red.childNode(withName: "DistanceLabel") as! SKLabelNode).text = "\(Int(question.score)) km"
         
         // Get clicked position
         red.position = CGPoint.init(x: question.xAnswer, y: question.yAnswer + 25)
-        red.zPosition = 10
+        red.zPosition = answerY > correctY ? 11 : 10
         red.isHidden = false
     }
     

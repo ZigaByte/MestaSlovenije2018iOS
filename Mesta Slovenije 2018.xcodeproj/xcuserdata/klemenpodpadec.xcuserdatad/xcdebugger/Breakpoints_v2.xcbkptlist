@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mesta Slovenije 2018/Gameplay.swift"
-            timestampString = "542062660.779649"
+            timestampString = "542065568.573174"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "213"
-            endingLineNumber = "213"
+            startingLineNumber = "248"
+            endingLineNumber = "248"
             landmarkName = "touchDown(atPoint:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,27 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mesta Slovenije 2018/Gameplay.swift"
-            timestampString = "542062660.779649"
+            timestampString = "542065568.573174"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
-            landmarkName = "didMove(to:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Mesta Slovenije 2018/Gameplay.swift"
-            timestampString = "542062660.779649"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "349"
-            endingLineNumber = "349"
+            startingLineNumber = "384"
+            endingLineNumber = "384"
             landmarkName = "coordinateToPixels(coordinate:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -58,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mesta Slovenije 2018/Gameplay.swift"
-            timestampString = "542062660.779649"
+            timestampString = "542065568.573174"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "217"
-            endingLineNumber = "217"
+            startingLineNumber = "252"
+            endingLineNumber = "252"
             landmarkName = "touchDown(atPoint:)"
             landmarkType = "7">
          </BreakpointContent>
