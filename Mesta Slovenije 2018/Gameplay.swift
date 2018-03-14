@@ -80,7 +80,7 @@ class Gameplay: SKScene {
                 allQuestions.append(Question(lat: Double(components[3].trimmingCharacters(in: .whitespacesAndNewlines))!,
                                              lon: Double(components[4].trimmingCharacters(in: .whitespacesAndNewlines))!,
                                              xAnswer: 0, yAnswer: 0,
-                                             name: components[1], score:0))
+                                             name: components[1], score:10000))
             }
         }
         return (allQuestions, Stage(name: stageName, questions:[]))
@@ -90,13 +90,14 @@ class Gameplay: SKScene {
     override func didMove(to view: SKView) {
 
         var loadedData: [([Question], Stage)] = []
+        loadedData.append(loadStage(fileName: "mesta1", ofType:"txt", stageName: "Velika Mesta"))
+        loadedData.append(loadStage(fileName: "mesta2", ofType:"txt", stageName: "Mesta"))
+        /*
+        loadedData.append(loadStage(fileName: "mesta3", ofType:"txt", stageName: "Manjša Mesta"))
         loadedData.append(loadStage(fileName: "elektrarne", ofType:"txt", stageName: "Elektrarne"))
         loadedData.append(loadStage(fileName: "gore", ofType:"txt", stageName: "Gore"))
         loadedData.append(loadStage(fileName: "gradovi", ofType:"txt", stageName: "Gradovi"))
         loadedData.append(loadStage(fileName: "izviri", ofType:"txt", stageName: "Izviri"))
-        loadedData.append(loadStage(fileName: "mesta1", ofType:"txt", stageName: "Velika Mesta"))
-        loadedData.append(loadStage(fileName: "mesta2", ofType:"txt", stageName: "Mesta"))
-        loadedData.append(loadStage(fileName: "mesta3", ofType:"txt", stageName: "Manjša Mesta"))
         loadedData.append(loadStage(fileName: "mesta4", ofType:"txt", stageName: "Naselja"))
         loadedData.append(loadStage(fileName: "muzeji", ofType:"txt", stageName: "Muzeji"))
         loadedData.append(loadStage(fileName: "naravne_znamenitosti", ofType:"txt", stageName: "Naravne znamenitosti"))
@@ -105,7 +106,7 @@ class Gameplay: SKScene {
         loadedData.append(loadStage(fileName: "stadioni", ofType:"txt", stageName: "Športni objekti"))
         loadedData.append(loadStage(fileName: "zdravilisca", ofType:"txt", stageName: "Zdraviliščca"))
         loadedData.append(loadStage(fileName: "znamenitosti", ofType:"txt", stageName: "Znamenitosti"))
-        
+        */
         STAGE_COUNT = loadedData.count
 
         
@@ -135,10 +136,17 @@ class Gameplay: SKScene {
 
         // Fill stages
         var  i = 0
-        for data in  loadedData {
+        for data in loadedData {
             stages.append(data.1)
-            for j in 0...(QUESTIONS_PER_STAGE-1){
-                stages[i].questions.append(data.0[j])
+            outer:while stages[i].questions.count < QUESTIONS_PER_STAGE {
+            //for _ in 0...(QUESTIONS_PER_STAGE-1){
+                let r = arc4random_uniform(UInt32(data.0.count))
+                for q in stages[i].questions {
+                    if(data.0[Int(r)].name == q.name){
+                        continue outer
+                    }
+                }
+                stages[i].questions.append(data.0[Int(r)])
             }
             i += 1
         }
@@ -171,6 +179,10 @@ class Gameplay: SKScene {
         let question: Question = getQuestion(sIndex: sIndex, qIndex: qIndex)
         questionLabel!.text = question.name
         
+        questionLabel?.fontSize = questionLabel!.fontSize * CGFloat(575 / Float(questionLabel!.frame.size.width))
+        if(Int(questionLabel!.fontSize) > 100){
+            questionLabel!.fontSize = 100
+        }
         greenNode?.isHidden = true
         redNode?.isHidden = true
     }
@@ -204,18 +216,17 @@ class Gameplay: SKScene {
         let answerY = correctPos.1 + 25
         let correctY = question.yAnswer + 25
         
-        green.position = CGPoint.init(x: CGFloat(correctPos.0), y: CGFloat(correctPos.1 + 25))
+        green.position = CGPoint.init(x: CGFloat(correctPos.0) - 3, y: CGFloat(correctPos.1 + 30))
         green.zPosition = answerY > correctY ? 10 : 11
         green.isHidden = false
         
         (red.childNode(withName: "DistanceLabel") as! SKLabelNode).text = "\(Int(question.score)) km"
         
         // Get clicked position
-        red.position = CGPoint.init(x: question.xAnswer, y: question.yAnswer + 25)
+        red.position = CGPoint.init(x: question.xAnswer - 3, y: question.yAnswer + 30)
         red.zPosition = answerY > correctY ? 11 : 10
         red.isHidden = false
     }
-    
     
     func touchDown(atPoint pos : CGPoint) {
 
@@ -276,6 +287,7 @@ class Gameplay: SKScene {
             else{
                 state = State.STAGE_RESULT
                 questionLabel?.text = "Rezultati"
+                questionLabel?.fontSize = CGFloat(100)
                 
                 // Show the 3 things
                 setMarkerPositions(question: stages[stageNumber].questions[0], red: redNode1!, green: greenNode1!)
@@ -290,25 +302,6 @@ class Gameplay: SKScene {
         case .STAGE_RESULT:
             print("Stage Results")
             
-            // Move to next stage
-            stageNumber += 1
-            
-            if(stageNumber < STAGE_COUNT){
-                // TODO Hide stuff maybe
-                
-                state = State.INTRO
-                gameUI?.isHidden = true
-                introUI?.isHidden = false
-                updateGoal()
-                stageNameLabel?.text = stages[stageNumber].name
-
-                
-            }
-                // Or to game results
-            else{
-                state = State.GAME_RESULTS
-            }
-            
             redNode1?.isHidden = true
             redNode2?.isHidden = true
             redNode3?.isHidden = true
@@ -316,6 +309,64 @@ class Gameplay: SKScene {
             greenNode2?.isHidden = true
             greenNode3?.isHidden = true
             linesNode!.removeAllChildren()
+            
+            // Move to next stage
+            stageNumber += 1
+            
+            let gameOver: Bool = score > goal
+            
+            if(stageNumber < STAGE_COUNT && !gameOver){
+                state = State.INTRO
+                gameUI?.isHidden = true
+                introUI?.isHidden = false
+                updateGoal()
+                stageNameLabel?.text = stages[stageNumber].name
+                
+                stageNameLabel?.fontSize = stageNameLabel!.fontSize * CGFloat(575 / Float(stageNameLabel!.frame.size.width))
+                if(Int(stageNameLabel!.fontSize) > 110){
+                    stageNameLabel!.fontSize = 110
+                }
+
+                
+            }
+                // Or to game results
+            else{
+                if(gameOver){
+                    print("Game Over")
+                    questionLabel?.text = "Konec igre!"
+                    
+                    // Najdi najslabse vprasanje in ga prikazi. TODO maybe best 3, idk
+                    var best: Question = stages[0].questions[0]
+                    for stage in stages {
+                        for q in stage.questions {
+                            if(q.score > best.score && q.score < 1000){
+                                best = q
+                            }
+                        }
+                    }
+                    setMarkerPositions(question: best, red: redNode!, green: greenNode!)
+                    (redNode!.childNode(withName: "DistanceLabel") as! SKLabelNode).text = "\(best.name) \(Int(best.score)) km"
+                }else{
+                    questionLabel?.text = "Zmaga!"
+                    
+                    // Najdi najboljse vprasanje in ga prikazi
+                    var best: Question = stages[0].questions[0]
+                    for stage in stages {
+                        for q in stage.questions {
+                            if(q.score < best.score && q.score < 1000){
+                                best = q
+                            }
+                        }
+                    }
+                    setMarkerPositions(question: best, red: redNode!, green: greenNode!)
+                    (redNode!.childNode(withName: "DistanceLabel") as! SKLabelNode).text = "\(best.name) \(Int(best.score)) km"
+                    
+                    print("Zmaga")
+                }
+                questionLabel?.fontSize = CGFloat(100)
+
+                state = State.GAME_RESULTS
+            }
             
         case .GAME_RESULTS:
             print("Game Results")
