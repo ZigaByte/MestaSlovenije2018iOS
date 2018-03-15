@@ -92,7 +92,7 @@ class Gameplay: SKScene {
         var loadedData: [([Question], Stage)] = []
         loadedData.append(loadStage(fileName: "mesta1", ofType:"txt", stageName: "Velika Mesta"))
         loadedData.append(loadStage(fileName: "mesta2", ofType:"txt", stageName: "Mesta"))
-        /*
+        
         loadedData.append(loadStage(fileName: "mesta3", ofType:"txt", stageName: "Manjša Mesta"))
         loadedData.append(loadStage(fileName: "elektrarne", ofType:"txt", stageName: "Elektrarne"))
         loadedData.append(loadStage(fileName: "gore", ofType:"txt", stageName: "Gore"))
@@ -106,7 +106,7 @@ class Gameplay: SKScene {
         loadedData.append(loadStage(fileName: "stadioni", ofType:"txt", stageName: "Športni objekti"))
         loadedData.append(loadStage(fileName: "zdravilisca", ofType:"txt", stageName: "Zdraviliščca"))
         loadedData.append(loadStage(fileName: "znamenitosti", ofType:"txt", stageName: "Znamenitosti"))
-        */
+ 
         STAGE_COUNT = loadedData.count
 
         
@@ -244,7 +244,6 @@ class Gameplay: SKScene {
             showQuestion(sIndex: stageNumber, qIndex: questionNumber)
             
             state = State.QUESTION
-            
             
         case .QUESTION:
             print("Question")

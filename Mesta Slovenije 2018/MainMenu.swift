@@ -18,12 +18,6 @@ class MainMenu: SKScene {
     
     
     func touchDown(atPoint pos : CGPoint) {
-        /*
-        print("x\(pos.x)")
-        print("y\(pos.y)")
-        */
-        
-        
         // Detect button presses
         let node = self.nodes(at: pos)
         for n in node{
@@ -44,6 +38,13 @@ class MainMenu: SKScene {
                     
                 case "Instructions":
                     print("Let's Instructions!")
+                    if let scene = SKScene(fileNamed: "Tutorial") {
+                        // Set the scale mode to scale to fit the window
+                        scene.scaleMode = .aspectFit
+                        
+                        // Present the scene
+                        self.view!.presentScene(scene)
+                    }
                 case "Leaderboard":
                     print("Let's Leaderboard!")
                 case "About":
