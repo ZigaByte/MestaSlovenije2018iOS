@@ -8,12 +8,25 @@
 
 import SpriteKit
 import GameplayKit
+import GoogleMobileAds
 
 class MainMenu: SKScene {
+    
+    var highScoreLabel: SKLabelNode? = nil
     
     // This method is called when the scene gets put into the view
     override func didMove(to view: SKView) {
         print("started scene")
+        
+        highScoreLabel = self.childNode(withName: "//HighScoreLabel") as? SKLabelNode
+        let highScore = UserDefaults.standard.integer(forKey: "RECORD")
+        if(highScore == 0){
+            highScoreLabel?.text = "Rekord: -"
+        }else{
+            highScoreLabel?.text = "Rekord: \(highScore) km"
+        }
+        highScoreLabel?.zPosition = 100
+        
     }
     
     
@@ -27,7 +40,7 @@ class MainMenu: SKScene {
                 switch name {
                 case "PlayButton":
                     print("Let's play!")
-                    
+                                        
                     if let scene = SKScene(fileNamed: "Gameplay") {
                         // Set the scale mode to scale to fit the window
                         scene.scaleMode = .aspectFit

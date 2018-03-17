@@ -92,7 +92,7 @@ class Gameplay: SKScene {
         var loadedData: [([Question], Stage)] = []
         loadedData.append(loadStage(fileName: "mesta1", ofType:"txt", stageName: "Velika Mesta"))
         loadedData.append(loadStage(fileName: "mesta2", ofType:"txt", stageName: "Mesta"))
-        
+        //*
         loadedData.append(loadStage(fileName: "mesta3", ofType:"txt", stageName: "Manjša Mesta"))
         loadedData.append(loadStage(fileName: "elektrarne", ofType:"txt", stageName: "Elektrarne"))
         loadedData.append(loadStage(fileName: "gore", ofType:"txt", stageName: "Gore"))
@@ -106,7 +106,7 @@ class Gameplay: SKScene {
         loadedData.append(loadStage(fileName: "stadioni", ofType:"txt", stageName: "Športni objekti"))
         loadedData.append(loadStage(fileName: "zdravilisca", ofType:"txt", stageName: "Zdraviliščca"))
         loadedData.append(loadStage(fileName: "znamenitosti", ofType:"txt", stageName: "Znamenitosti"))
- 
+        /**/
         STAGE_COUNT = loadedData.count
 
         
@@ -331,7 +331,6 @@ class Gameplay: SKScene {
                 // Or to game results
             else{
                 if(gameOver){
-                    print("Game Over")
                     questionLabel?.text = "Konec igre!"
                     
                     // Najdi najslabse vprasanje in ga prikazi. TODO maybe best 3, idk
@@ -360,9 +359,15 @@ class Gameplay: SKScene {
                     setMarkerPositions(question: best, red: redNode!, green: greenNode!)
                     (redNode!.childNode(withName: "DistanceLabel") as! SKLabelNode).text = "\(best.name) \(Int(best.score)) km"
                     
-                    print("Zmaga")
+                    let oldScore = UserDefaults.standard.integer(forKey: "RECORD")
+                    if(Int(score) < oldScore || oldScore == 0){
+                        UserDefaults.standard.set(Int(score), forKey: "RECORD")
+                    }
                 }
                 questionLabel?.fontSize = CGFloat(100)
+
+                //Show ad
+                (self.view!.window?.rootViewController as! GameViewController).showAd()
 
                 state = State.GAME_RESULTS
             }
