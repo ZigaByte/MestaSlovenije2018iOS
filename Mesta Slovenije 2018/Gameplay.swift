@@ -68,7 +68,8 @@ class Gameplay: SKScene {
     
     var stageGoalLabel: SKLabelNode? = nil
     var stageNameLabel: SKLabelNode? = nil
-    
+    var stageLabel: SKLabelNode? = nil
+
     func loadStage(fileName: String, ofType: String, stageName: String) -> ([Question], Stage){
         let path:String = Bundle.main.path(forResource: fileName, ofType: ofType)!
         let text = try? String(contentsOfFile: path, encoding: String.Encoding.utf8)
@@ -134,6 +135,7 @@ class Gameplay: SKScene {
         
         stageNameLabel = self.childNode(withName: "//StageNameLabel") as? SKLabelNode
         stageGoalLabel = self.childNode(withName: "//StageGoalLabel") as? SKLabelNode
+        stageLabel = self.childNode(withName: "//StageLabel") as? SKLabelNode
 
         // Fill stages
         var  i = 0
@@ -162,6 +164,7 @@ class Gameplay: SKScene {
         introUI?.isHidden = false
         resultsUI?.isHidden = true
         stageNameLabel?.text = stages[stageNumber].name
+        stageLabel?.text = "Stopnja \(stageNumber+1)/15"
         updateGoal()
         score = 0
         updateScore()
@@ -324,6 +327,7 @@ class Gameplay: SKScene {
                 introUI?.isHidden = false
                 updateGoal()
                 stageNameLabel?.text = stages[stageNumber].name
+                stageLabel?.text = "Stopnja \(stageNumber+1)/15"
                 
                 stageNameLabel?.fontSize = stageNameLabel!.fontSize * CGFloat(575 / Float(stageNameLabel!.frame.size.width))
                 if(Int(stageNameLabel!.fontSize) > 110){
