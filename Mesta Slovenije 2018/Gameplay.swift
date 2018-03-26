@@ -141,17 +141,17 @@ class Gameplay: SKScene {
         var  i = 0
         for data in loadedData {
             stages.append(data.1)
-            //var a = 1
+            var a = 1
             outer:while stages[i].questions.count < QUESTIONS_PER_STAGE {
             //for _ in 0...(QUESTIONS_PER_STAGE-1){
                 var r = arc4random_uniform(UInt32(data.0.count))
-                //r = UInt32(a)
+                r = UInt32(a)
                 for q in stages[i].questions {
                     if(data.0[Int(r)].name == q.name){
                         continue outer
                     }
                 }
-                //a += 1
+                a += 1
                 stages[i].questions.append(data.0[Int(r)])
             }
             i += 1
