@@ -98,11 +98,11 @@ class Gameplay: SKScene {
         loadedData.append(loadStage(fileName: "mesta3", ofType:"txt", stageName: "Manjša Mesta"))
         loadedData.append(loadStage(fileName: "mesta4", ofType:"txt", stageName: "Naselja"))
         loadedData.append(loadStage(fileName: "znamenitosti", ofType:"txt", stageName: "Znamenitosti"))
-        loadedData.append(loadStage(fileName: "smucisca", ofType:"txt", stageName: "Smučiščca"))
+        loadedData.append(loadStage(fileName: "smucisca", ofType:"txt", stageName: "Smučišča"))
         loadedData.append(loadStage(fileName: "stadioni", ofType:"txt", stageName: "Športni objekti"))
         loadedData.append(loadStage(fileName: "naravne_znamenitosti", ofType:"txt", stageName: "Naravne znamenitosti"))
         loadedData.append(loadStage(fileName: "podjetja", ofType:"txt", stageName: "Podjetja"))
-        loadedData.append(loadStage(fileName: "zdravilisca", ofType:"txt", stageName: "Zdraviliščca"))
+        loadedData.append(loadStage(fileName: "zdravilisca", ofType:"txt", stageName: "Zdravilišča"))
         loadedData.append(loadStage(fileName: "gradovi", ofType:"txt", stageName: "Gradovi"))
         loadedData.append(loadStage(fileName: "izviri", ofType:"txt", stageName: "Izviri"))
         loadedData.append(loadStage(fileName: "muzeji", ofType:"txt", stageName: "Muzeji"))
@@ -145,7 +145,7 @@ class Gameplay: SKScene {
             outer:while stages[i].questions.count < QUESTIONS_PER_STAGE {
             //for _ in 0...(QUESTIONS_PER_STAGE-1){
                 var r = arc4random_uniform(UInt32(data.0.count))
-                r = UInt32(a)
+                //r = UInt32(a)
                 for q in stages[i].questions {
                     if(data.0[Int(r)].name == q.name){
                         continue outer

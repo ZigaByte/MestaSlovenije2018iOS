@@ -86,9 +86,9 @@ class GameViewController: UIViewController, GADInterstitialDelegate {
             
             view.ignoresSiblingOrder = true
             
-            view.showsFPS = true
+            //view.showsFPS = true
             
-            view.showsNodeCount = true
+            //view.showsNodeCount = true
         }
     }
 
